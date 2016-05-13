@@ -6,21 +6,27 @@
  * Time: 16:52
  */
 
+//TODO : CREATION OF A TABLE
 
 //required in function.php
-class OrmModel {
+abstract class OrmModel {
 
     private $table_name = '';
-
 
     /**
      * on new class OrmModel set table name without prefix: default posts
      * OrmModel constructor.
      * @param string $table_name whitout prefix
-     */
+     *
+     * if you don't want an abstract one you can do with construct
+     *
+     * un comment the belowing function and remove abstract before class OrmModel
+     *
     public function __construct($table_name = 'posts'){
-        $this->table_name = $table_name;
+    $this->table_name = $table_name;
     }
+     */
+
 
     /**
      * get the name of the current table used
@@ -180,3 +186,10 @@ class OrmModel {
         return $wpdb->delete( $this->table(), $data );
     }
 }
+
+/**
+ * Exemple how you create your extend model
+ */
+//class Posts extends Model {
+//    static $table_name = 'posts';
+//}
